@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .product{
+        height:300px;
+        width:90%;
+        
+        display: flex;
+        flex-wrap: wrap;
+        gap:20px
+    }
+
+    #card{
+        height: 100%;
+       
+    }
+
+    #counter{
+        height: 50px;
+        width: 50px;
+        border: 1px solid;
+        margin-top: 100px;
+    }
+</style>
+
+
+<body>
+    <div><a href="admin.html">admin</a></div>
+    <div class="product">
+        
+    </div>
+    <div id="counter"></div>
+</body>
+</html>
+
+<script>
+
+
+
+var added=JSON.parse(localStorage.getItem("Products"))
+
+var count=added.length
+console.log(typeof(count))
+console.log(added.length)
+document.querySelector("#counter").innerText=count
+
+var product=document.querySelector(".product")
+
+displaydata(added)
+
+function displaydata(data){
+
+    product.innerHTML=null
+
+    data.forEach(function(element,index){
+        
+     var card=document.createElement("div")
+     card.setAttribute("id","card")
+
+   var img=document.createElement("img")
+     img.src=element.imgURL
+        var name=document.createElement("p")
+        name.innerText=element.name
+
+        var price=document.createElement("p")
+        price.innerText=element.price
+var del=document.createElement("button")
+del.innerText="Delete"
+del.setAttribute("id","remove")
+del.addEventListener("click",function(){
+console.log(index)
+data.splice(index,1)
+console.log(added)
+displaydata(data)
+document.querySelector("#counter").innerText=data.length
+})
+
+function remove(){
+    var count=added.length
+    count=count-1
+//    console.log(event.target.parentNode) 
+
+
+    
+
+}
+
+
+
+
+
+card.append(img,name,price,del)
+
+product.append(card)
+    })
+}
+
+
+</script>

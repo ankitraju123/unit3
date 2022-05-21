@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div><a href="products.html">Product</a></div>
+    <form id="product"  onsubmit="submitproduct(event)">
+        <input type="text" placeholder="name" id="name">
+        <input type="text" placeholder="category" id="category">
+        <input type="text" placeholder="imgURL" id="image">
+        <input type="number" placeholder="price" id="price">
+        <select id="gender" >
+            <option value="male">male</option>
+            <option value="female">female</option>
+
+        </select>
+        <input type="submit" id="add" value="add">
+        <input type="submit" id="sold" value="True">
+    
+        
+    </form>
+</body>
+</html>
+<script>
+
+
+function product(name,category,imgURL,price,gender){
+
+    this.name=name
+    this.category=category
+    this.imgURL=imgURL
+    this.price=price
+    this.gender=gender
+}
+
+
+
+var arr=JSON.parse(localStorage.getItem("Products"))||[]
+console.log(arr)
+
+    function submitproduct(e){
+        e.preventDefault()
+        // console.log("added")
+let form=document.querySelector("#product");
+let name=form.name.value
+let category=form.category.value
+let imgURL=form.image.value
+let price=form.price.value
+let gender=form.gender.value
+
+
+
+
+
+let p=new product(name,category,imgURL,price,gender)
+arr.push(p)
+
+
+localStorage.setItem("Products",JSON.stringify(arr))
+
+window.location.href="products.html"
+        
+    }
+</script>
