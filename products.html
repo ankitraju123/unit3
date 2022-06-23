@@ -60,7 +60,7 @@ function displaydata(data){
     product.innerHTML=null
 
     data.forEach(function(element,index){
-        
+        console.log(element)
      var card=document.createElement("div")
      card.setAttribute("id","card")
 
@@ -82,15 +82,15 @@ displaydata(data)
 document.querySelector("#counter").innerText=data.length
 })
 
-function remove(){
-    var count=added.length
-    count=count-1
+// function remove(){
+//     var count=added.length
+//     count=count-1
 //    console.log(event.target.parentNode) 
 
 
     
 
-}
+
 
 
 
@@ -103,4 +103,9 @@ product.append(card)
 }
 
 
+
+
 </script>
+
+
+
